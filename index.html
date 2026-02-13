@@ -1,0 +1,362 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You Yash ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+    .card-back h2{
+    animation: glowName 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowName{
+    from{ text-shadow:0 0 10px white; }
+    to{ text-shadow:0 0 25px gold; }
+}
+
+/* Slow zoom photo */
+.photo img{
+    animation: slowZoom 12s infinite alternate ease-in-out;
+}
+
+@keyframes slowZoom{
+    from{ transform:scale(1); }
+    to{ transform:scale(1.08); }
+}
+
+/* Dramatic secret */
+#secret{
+    margin-top:10px;
+    font-size:16px;
+    display:none;
+    opacity:0;
+    transform:scale(0.8);
+    transition: all 2s ease;
+}
+
+#secret.show{
+    display:block;
+    opacity:1;
+    transform:scale(1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+    background-size:400% 400%;
+    animation:bgMove 15s infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{background-position:left;}
+    100%{background-position:right;}
+}
+
+/* Intro */
+.intro{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.75);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    z-index:10;
+}
+
+.intro h2{
+    font-family:'Great Vibes',cursive;
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.intro button{
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    font-size:18px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 25px pink;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+/* Card */
+.card{
+    width:320px;
+    height:480px;
+    perspective:1000px;
+    animation:heartbeat 2s infinite;
+}
+
+@keyframes heartbeat{
+    0%{transform:scale(1);}
+    25%{transform:scale(1.03);}
+    40%{transform:scale(1);}
+    60%{transform:scale(1.03);}
+    100%{transform:scale(1);}
+}
+
+.card-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:1s;
+}
+
+.card.open .card-inner{
+    transform:rotateY(180deg);
+}
+
+.card-front, .card-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    backface-visibility:hidden;
+    box-shadow:0 25px 50px rgba(0,0,0,0.3);
+    padding:25px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.card-front{
+    background:white;
+}
+
+.card-front h1{
+    font-family:'Great Vibes',cursive;
+    font-size:42px;
+    color:#ff4d6d;
+}
+
+
+
+
+.card-back{
+    background:#ff4d6d;
+    color:white;
+    transform:rotateY(180deg);
+}
+
+/* Photo */
+.photo{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid white;
+    box-shadow:0 0 25px white,0 0 40px pink;
+    margin-bottom:20px;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 25%;
+}
+
+/* Message */
+#loveMessage{
+    font-size:15px;
+    min-height:60px;
+    opacity:0;
+    transition:opacity 1.5s;
+}
+
+/* Secret */
+#secret{
+    margin-top:10px;
+    font-size:14px;
+    display:none;
+    animation:fadeIn 3s forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* Hearts */
+.heart{
+    position:absolute;
+    top:-10%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh);}
+}
+
+/* Sparkle */
+.sparkle{
+    position:absolute;
+    animation:fadeOut 2s forwards;
+}
+
+@keyframes fadeOut{
+    to{opacity:0;transform:translateY(-20px);}
+}
+
+@media(max-width:480px){
+    .card{width:280px;height:440px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="intro">
+    <h2>For Yash ❤️</h2>
+    <button onclick="startLove()">Click Me😁🤗💕</button>
+</div>
+
+<div class="card" onclick="this.classList.toggle('open')">
+    <div class="card-inner">
+
+        <div class="card-front">
+            <h1>Happy Valentine’s Day Baby 😁💌</h1>
+            <p>Tap For More surprise ❤️</p>
+        </div>
+
+        <div class="card-back">
+            <div class="photo">
+                <img src="ishu3.jpeg">
+            </div>
+            <h2>Yash ❤️</h2>
+            <p id="loveMessage"></p>
+            <p id="secret">Not trying to be cringe okay...just honest😘😉❤️🫶🏻✨</p>
+        </div>
+
+    </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="mp3.mpeg"audio/mpeg">
+</audio>
+
+<script>
+
+function startLove(){
+    document.querySelector(".intro").style.display="none";
+
+    let music=document.getElementById("bgMusic");
+    music.volume=0;
+    music.play();
+
+    // Smooth fade in
+    let fade=setInterval(()=>{
+        if(music.volume < 0.4){
+            music.volume += 0.02;
+        } else {
+            clearInterval(fade);
+        }
+    },300);
+}
+
+/* TYPEWRITER */
+const messages=[
+"With you, every moment feels magical ✨",
+"You are my calm, my Happiness ❤️",
+"I choose you. Always. 💕",
+"I don't know how long...",
+"We'll walk this journey together 🥹",
+"But for me...",
+"You + Me will always be my favorite story 🧿🌸",
+"I've never said this out before..",
+"but i feel it every single day...",
+"I love youuu💕💕💕",
+];
+
+let msgIndex=0;
+let isTyping=false;
+
+function typeWriter(text){
+    if(isTyping) return;
+    isTyping=true;
+
+    let element=document.getElementById("loveMessage");
+    element.innerHTML="";
+    element.style.opacity=1;
+
+    let i=0;
+
+    let typing=setInterval(()=>{
+        element.innerHTML += text.charAt(i);
+        i++;
+
+        if(i >= text.length){
+            clearInterval(typing);
+
+            setTimeout(()=>{
+                element.style.opacity=0;
+                isTyping=false;
+                msgIndex=(msgIndex+1)%messages.length;
+                setTimeout(()=>{
+                    typeWriter(messages[msgIndex]);
+                },1300);
+            },3000);
+        }
+    },80); // slower typing speed
+}
+
+// Start first message after card opens
+document.querySelector(".card").addEventListener("click",()=>{
+    setTimeout(()=>{
+        typeWriter(messages[msgIndex]);
+    },600);
+});
+
+/* SECRET MESSAGE AFTER 18 SEC */
+setTimeout(()=>{
+    document.getElementById("secret").classList.add("show");
+},65000);
+
+/* HEARTS */
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.fontSize=(15+Math.random()*20)+"px";
+    heart.style.animationDuration=(6+Math.random()*5)+"s";
+    document.body.appendChild(heart);
+}
+
+/* SPARKLES */
+setInterval(()=>{
+    let sparkle=document.createElement("div");
+    sparkle.className="sparkle";
+    sparkle.innerHTML="✨";
+    sparkle.style.left=Math.random()*window.innerWidth+"px";
+    sparkle.style.top=Math.random()*window.innerHeight+"px";
+    sparkle.style.fontSize="18px";
+    document.body.appendChild(sparkle);
+    setTimeout(()=>sparkle.remove(),2000);
+},900);
+
+</script>
+</body>
+</html>
