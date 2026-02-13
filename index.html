@@ -233,7 +233,7 @@ body{
     <button onclick="startLove()">Click Me😁🤗💕</button>
 </div>
 
-<div class="card" onclick="this.classList.toggle('open')">
+<div class="card" onclick="this.classList.toggle('open');">
     <div class="card-inner">
 
         <div class="card-front">
@@ -253,7 +253,7 @@ body{
     </div>
 </div>
 
-<audio id="bg-music" autoplay loop>
+<audio id="bgMusic" loop>
   <source src="love.mp3" type="audio/mpeg">
 </audio>
 
@@ -272,7 +272,6 @@ function startLove(){
     music.volume=0;
     music.play();
 
-    // Smooth fade in
     let fade=setInterval(()=>{
         if(music.volume < 0.4){
             music.volume += 0.02;
@@ -330,16 +329,16 @@ function typeWriter(text){
 
 // Start first message after card opens
 document.querySelector(".card").addEventListener("click",()=>{
+
     setTimeout(()=>{
         typeWriter(messages[msgIndex]);
     },600);
+
+    setTimeout(()=>{
+        document.getElementById("secret").classList.add("show");
+    },65000);
+
 });
-
-/* SECRET MESSAGE AFTER 18 SEC */
-setTimeout(()=>{
-    document.getElementById("secret").classList.add("show");
-},65000);
-
 /* HEARTS */
 for(let i=0;i<20;i++){
     let heart=document.createElement("div");
