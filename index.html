@@ -253,11 +253,17 @@ body{
     </div>
 </div>
 
-<audio id="bg-music" loop>
-    <source src="love.mp3" type="audio/mpeg">
+<audio id="bg-music" autoplay loop>
+  <source src="love.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+window.addEventListener("load", function() {
+  var audio = document.getElementById("bg-music");
+  audio.play().catch(function(error) {
+    console.log("Autoplay blocked");
+  });
+});
 
 function startLove(){
     document.querySelector(".intro").style.display="none";
